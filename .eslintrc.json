@@ -1,3 +1,22 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "wesbos/typescript"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.tsx"],
+      "rules" : {
+        // "react/prop-types": "off",
+        // "import/no-cycle": "off"
+      }
+    }
+  ],
+  "rules": {
+    "no-console": "warn",
+    "arrow-body-style": "off"
+  }
 }
