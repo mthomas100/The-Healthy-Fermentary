@@ -9,7 +9,7 @@ export default function Hero() {
         />
 
         <div
-          className="absolute inset-0 bg-indigo-800 mix-blend-multiply"
+          className="absolute inset-0 bg-red-300 mix-blend-multiply"
           aria-hidden="true"
         />
       </div>
