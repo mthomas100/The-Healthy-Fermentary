@@ -1,9 +1,16 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Hero from '../components/Hero';
+import { ALL_PRODUCTS_QUERY } from '../graphql/queries';
+import { Product } from '../graphql/types';
+import client from '../lib/apolloClient';
 import styles from '../styles/Home.module.css';
 
-const Home: NextPage = () => {
+type HomeProps = {
+  products: Product[];
+};
+
+const Home: NextPage<HomeProps> = ({ products }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -18,3 +25,20 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  /* eslint-disable */
+
+  const { data: { products }} = await client.query({
+    query: ALL_PRODUCTS_QUERY,
+  });
+
+  /* eslint-enable */
+
+  return {
+    props: {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      products,
+    },
+  };
+};

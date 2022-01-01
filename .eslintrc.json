@@ -6,17 +6,9 @@
   "plugins": [
     "prettier"
   ],
-  "overrides": [
-    {
-      "files": ["**/*.tsx"],
-      "rules" : {
-        // "react/prop-types": "off",
-        // "import/no-cycle": "off"
-      }
-    }
-  ],
   "rules": {
     "no-console": "warn",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "react/prop-types": "off"
   }
 }
