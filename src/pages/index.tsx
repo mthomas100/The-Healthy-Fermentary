@@ -2,12 +2,13 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import styled from 'styled-components';
 import CategoryFilters from '../components/CategoryFilters';
-import CatPageEx from '../components/CatPageEx';
+import ProductsFilter from '../components/ProductsFilter';
 import Hero from '../components/Hero';
 import Products from '../components/Products';
 import { ALL_PRODUCTS_QUERY } from '../graphql/queries';
 import { Product } from '../graphql/types';
 import client from '../lib/apolloClient';
+import ProductsHeader from '../components/ProductsHeader';
 
 type HomeProps = {
   products: Product[];
@@ -22,8 +23,8 @@ const Home: NextPage<HomeProps> = ({ products }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
-      <CatPageEx />
-      <CategoryFilters />
+      <ProductsHeader />
+      <ProductsFilter />
       <Products products={products} />
     </>
   );
