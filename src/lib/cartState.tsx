@@ -30,38 +30,29 @@ type CartContext = {
 const LocalStateContext = createContext(null);
 const LocalStateProvider = LocalStateContext.Provider;
 
+type ProductWithQuantity = Product & { quantity: number };
+
 const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // CART CONTENTS & MODIFICATION
-  const [cartContents, setCartContents] = useState([]);
+  const [cartContents, setCartContents] = useState<ProductWithQuantity[]>([]);
   const [cartItemTotal, setCartItemTotal] = useState(0);
 
-  function addToCart(product = {} as Product) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    const cartProduct = cloneDeep(product) as Product;
+  function addToCart(product = {} as ProductWithQuantity) {
+    const cartProduct = cloneDeep(product);
     const { id } = product;
 
     const cartIndex = cartContents.findIndex((item) => item.id === id);
 
-    // TODO: THE BELOW FUNCTIONS SHOULD AVOID DIRECTLY MODIFYING THE STATE DATA
-
     // item doesn't exist yet in our cart
     if (cartIndex === -1) {
-      console.log('NO ITEM EXISTS');
-      const cartProductNew = Object.assign(cartProduct, { quantity: 1 });
-      // cartProduct.quantity = 1;
-
-      setCartContents((prevArray) => [...prevArray, cartProductNew]);
+      cartProduct.quantity = 1;
+      setCartContents((prevArray) => [...prevArray, cartProduct]);
     }
 
     // item already exists in our cart
     if (cartIndex !== -1) {
-      // THIS IS CHANGING STATE, THEN ASSIGNING THE VALUE OF THE PROPERTY OF STATE
-      // TO A VARIABLE CALLED cartProductModified AND APPENDING IT TO THE ARRAY
-      // TODO: ASK DOES THIS AFFECT STATE IF setCartContents WERE NOT USED BELOW?s
-      const cartProductModified = (cartContents[cartIndex].quantity += 1);
-      console.log('ITEM EXISTS', cartProductModified);
-
-      setCartContents([...cartContents, cartProductModified]);
+      cartContents[cartIndex].quantity += 1;
+      setCartContents([...cartContents]);
     }
   }
 
