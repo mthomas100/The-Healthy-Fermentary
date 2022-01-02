@@ -17,9 +17,11 @@ import { Product } from '../graphql/types';
 //   product: Product;
 // };
 
+type ProductWithQuantity = Product & { quantity: number };
+
 type CartContext = {
   // cart contents is an array of objects
-  cartContents: Product[];
+  cartContents: ProductWithQuantity[];
   addToCart: (product: Product) => void;
   // removeFromCart,
   // modifyCartQuantity,
@@ -29,8 +31,6 @@ type CartContext = {
 
 const LocalStateContext = createContext(null);
 const LocalStateProvider = LocalStateContext.Provider;
-
-type ProductWithQuantity = Product & { quantity: number };
 
 const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // CART CONTENTS & MODIFICATION
@@ -56,8 +56,9 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     }
   }
 
-  function removeFromCart(id: ProductWithQuantity['id']) {
+  function removeFromCart(product = {} as ProductWithQuantity) {
     // remove item with a specified ID from the cart
+    const { id } = product;
     setCartContents(cartContents.filter((item) => item.id !== id));
   }
 
@@ -66,7 +67,6 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     newQuantity: number
   ) {
     const { id } = product;
-
     const cartIndex = cartContents.findIndex((item) => item.id === id);
 
     // item already exists in our cart

@@ -29,8 +29,7 @@ const products = [
 ];
 
 export default function Cart() {
-  const { cartContents } = useCart();
-  console.log(cartContents);
+  // const { cartContents: cart } = useCart();
   return (
     <div className="bg-white">
       <div className="max-w-4xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
