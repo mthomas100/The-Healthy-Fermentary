@@ -23,10 +23,13 @@ type CartContext = {
   // cart contents is an array of objects
   cartContents: ProductWithQuantity[];
   addToCart: (product: Product) => void;
-  // removeFromCart,
-  // modifyCartQuantity,
-  // emptyCart,
-  // cartItemTotal,
+  removeFromCart: (product: ProductWithQuantity) => void;
+  modifyCartQuantity: (
+    product: ProductWithQuantity,
+    newQuantity: number
+  ) => void;
+  emptyCart: () => void;
+  cartItemTotal: number;
 };
 
 const LocalStateContext = createContext(null);
