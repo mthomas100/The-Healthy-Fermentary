@@ -6,11 +6,11 @@ type AddToCartProps = {
   product: Product;
 };
 
-export default function AddToCart({ product }) {
-  const { cartContents, modifyCartQuantity } = useCart();
+const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
+  const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    modifyCartQuantity(product, 1); // TODO: Needs to add X to whats already there
+    addToCart(product); // TODO: Needs to add X to whats already there
   };
 
   return (
@@ -22,4 +22,6 @@ export default function AddToCart({ product }) {
       Add to bag
     </button>
   );
-}
+};
+
+export default AddToCart;

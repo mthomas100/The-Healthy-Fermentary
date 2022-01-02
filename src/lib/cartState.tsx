@@ -24,7 +24,6 @@ type CartContext = {
   // removeFromCart,
   // modifyCartQuantity,
   // emptyCart,
-  // modifyCart,
   // cartItemTotal,
 };
 
@@ -43,48 +42,32 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
     const cartIndex = cartContents.findIndex((item) => item.id === id);
 
+    // TODO: THE BELOW FUNCTIONS SHOULD AVOID DIRECTLY MODIFYING THE STATE DATA
+
     // item doesn't exist yet in our cart
     if (cartIndex === -1) {
-      console.log('item not found in cart');
-      Object.assign(cartProduct, { quantity: 1 });
+      console.log('NO ITEM EXISTS');
+      const cartProductNew = Object.assign(cartProduct, { quantity: 1 });
       // cartProduct.quantity = 1;
 
-      setCartContents((prevArray) => [...prevArray, cartProduct]);
+      setCartContents((prevArray) => [...prevArray, cartProductNew]);
     }
 
     // item already exists in our cart
     if (cartIndex !== -1) {
-      cartContents[cartIndex].quantity += 1;
-      setCartContents([...cartContents]);
+      // THIS IS CHANGING STATE, THEN ASSIGNING THE VALUE OF THE PROPERTY OF STATE
+      // TO A VARIABLE CALLED cartProductModified AND APPENDING IT TO THE ARRAY
+      // TODO: ASK DOES THIS AFFECT STATE IF setCartContents WERE NOT USED BELOW?s
+      const cartProductModified = (cartContents[cartIndex].quantity += 1);
+      console.log('ITEM EXISTS', cartProductModified);
+
+      setCartContents([...cartContents, cartProductModified]);
     }
   }
 
   function removeFromCart(id) {
     // remove item with a specified ID from the cart
     setCartContents(cartContents.filter((item) => item.id !== id));
-  }
-
-  function modifyCart(id, value) {
-    const cartIndex = cartContents.findIndex((item) => item.id === id);
-
-    // if value is 'increment', increase quantity by 1
-    if (value === 'increment') {
-      cartContents[cartIndex].quantity += 1;
-      setCartContents([...cartContents]);
-    }
-
-    if (value === 'decrement') {
-      const currentQuantity = cartContents[cartIndex].quantity;
-      // if value is 'decrement', and current quantity == 1, removeFromCart(id)
-      if (currentQuantity === 1) {
-        return removeFromCart(id);
-      }
-      // if value is 'decrement', and current quantity >= 1 decrease quantity by 1
-      if (currentQuantity >= 1) {
-        cartContents[cartIndex].quantity -= 1;
-        setCartContents([...cartContents]);
-      }
-    }
   }
 
   function modifyCartQuantity(product, quantity) {
@@ -133,7 +116,6 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         removeFromCart,
         modifyCartQuantity,
         emptyCart,
-        modifyCart,
         cartItemTotal,
       }}
     >
