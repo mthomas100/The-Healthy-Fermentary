@@ -56,26 +56,22 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     }
   }
 
-  function removeFromCart(id) {
+  function removeFromCart(id: ProductWithQuantity['id']) {
     // remove item with a specified ID from the cart
     setCartContents(cartContents.filter((item) => item.id !== id));
   }
 
-  function modifyCartQuantity(product, quantity) {
-    const cartProduct = cloneDeep(product);
+  function modifyCartQuantity(
+    product: ProductWithQuantity,
+    newQuantity: number
+  ) {
     const { id } = product;
 
     const cartIndex = cartContents.findIndex((item) => item.id === id);
 
-    // item doesn't exist yet in our cart
-    if (cartIndex === -1) {
-      cartProduct.quantity = quantity;
-      setCartContents((prevArray) => [...prevArray, cartProduct]);
-    }
-
     // item already exists in our cart
     if (cartIndex !== -1) {
-      cartContents[cartIndex].quantity += quantity;
+      cartContents[cartIndex].quantity += newQuantity;
       setCartContents([...cartContents]);
     }
   }
