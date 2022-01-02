@@ -16,7 +16,7 @@ const Layout: React.FC<Children> = ({ children }) => {
 export const Page: React.FC<Children> = ({ children }) => (
   <>
     <Head>
-      <title>Drone Store Concept</title>
+      <title>The Healthy Fermentary</title>
     </Head>
     <PageWrapper>
       <Layout>

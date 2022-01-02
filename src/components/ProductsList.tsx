@@ -21,7 +21,7 @@ const ProductsList: React.FC<ProductsProps> = ({ products }) => {
                   />
                 </div>
 
-                <h3 className="mt-4 text-sm text-gray-700">
+                <h3 className="mt-4 text-sm text-gray-700 font-normal">
                   <a href={product.href}>
                     <span className="absolute inset-0" />
                     {product.title}

@@ -1,6 +1,6 @@
 // import SingleProduct from 'components/general/SingleProduct';
 import Head from 'next/head';
-import SingleProduct from '../../components/SingleProducts';
+import SingleProduct from '../../components/SingleProduct';
 import { ALL_PRODUCTS_QUERY } from '../../graphql/queries';
 import { Product } from '../../graphql/types';
 import client from '../../lib/apolloClient';
