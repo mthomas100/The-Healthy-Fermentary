@@ -1,5 +1,6 @@
 import { CheckIcon, ClockIcon } from '@heroicons/react/solid';
 import { useCart } from '../lib/cartState';
+import CheckoutButton from './CheckoutButton';
 import ModifyCartSelector from './ModifyCartSelector';
 
 // const products = [
@@ -150,12 +151,7 @@ export default function Cart() {
               </div>
             </div>
             <div className="mt-10">
-              <button
-                type="submit"
-                className="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
-              >
-                Checkout
-              </button>
+              <CheckoutButton />
             </div>
 
             <div className="mt-6 text-sm text-center text-gray-500">
