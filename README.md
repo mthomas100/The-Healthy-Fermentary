@@ -9,14 +9,6 @@ In this project I engineered an eCommerce application for a customer in the proc
 
 # Technologies Used
 
-## Superplate
-
->[Superplate](https://github.com/pankod/superplate) is a well-structured production-ready frontend boilerplate with Typescript, Jest, testing-library, styled-component, Sass, Css, .env, Fetch, Axios, Reverse Proxy, >Bundle Analyzer and 30+ plugin. For now, only creates projects for React and Next.js
-
-## Framer Motion 
-
->[Framer Motion](https://www.framer.com/motion/) A production-ready motion library for React. Utilize the power behind Framer, the best prototyping tool for teams. Proudly open source.
-
 ## TailwindCSS
 
 >A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
@@ -35,23 +27,6 @@ In this project I engineered an eCommerce application for a customer in the proc
 
 >Online payment processing for internet businesses. Stripe is a suite of payment APIs that powers commerce for online businesses of all sizes
 >[Go To Documentation](https://stripe.com/docs/js)
-
-## react-use
-
->A Collection of useful React hooks.
->[Go To Documentation](https://github.com/streamich/react-use)
-
-
-## ESLint
-
-> A pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript. Maintain your code quality with ease.
-> [Go To Documentation](https://eslint.org/docs/user-guide/getting-started)
-
-
-## Prettier
-
-> An opinionated code formatter; Supports many languages; Integrates with most editors.
-> [Go To Documentation](https://prettier.io/docs/en/index.html)
 
 ## Strapi (Backend)
 
