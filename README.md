@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+**[Live Version of Project](https://thehealthyfermentary.com)**
 
-First, run the development server:
+-----------
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Project Description
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+In this project I engineered an eCommerce application for a customer in the process of starting a fermented beverage delivery service, designed reusable react components to enable sophisticated shopping experience while maintaining a clean codebase, conceptualized and implemented distinct desktop-centric and mobile-centric designs, communicated with, implemented requests from, and updated customer throughout the process from conception to completion. 
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## _Tech Stack:_ ##
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## TailwindCSS
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+>A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
+>[Go To Documentation](https://tailwindcss.com/docs)
 
-## Learn More
+## NextJS
 
-To learn more about Next.js, take a look at the following resources:
+> "The React Framework for Production" [Next.js](https://nextjs.org/) gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Apollo GraphQL
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+>Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. Use it to fetch, cache, >>and modify application data, all while automatically updating your UI.
+>[Go To Documentation](https://www.apollographql.com/docs/react/)
 
-## Deploy on Vercel
+## Stripe.js
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+>Online payment processing for internet businesses. Stripe is a suite of payment APIs that powers commerce for online businesses of all sizes
+>[Go To Documentation](https://stripe.com/docs/js)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Strapi (Backend)
+
+> [Strapi](Strapi.io) is the next-gen headless CMS, open-source, javascript, enabling content-rich experiences to be created, managed and exposed to any digital device.
+
+## MongoDB (Database)
+
+> Classified as a NoSQL database program, [MongoDB](https://www.mongodb.com/) uses JSON-like documents with optional schemas. 
+
+## Cloudinary
+
+> Developers and marketers use [Cloudinary](https://cloudinary.com/) to quickly and easily create, manage and deliver their digital experiences across any browser, device and bandwidth.
+
