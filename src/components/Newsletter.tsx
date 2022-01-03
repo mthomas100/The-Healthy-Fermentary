@@ -7,9 +7,8 @@ export default function NewsLetter() {
             Sign up for our newsletter
           </h2>
           <p className="mt-3 max-w-3xl text-lg text-gray-500">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            Lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-            fugiat.
+            Subscribe to our newsletter to get the latest news and updates from
+            the Healthy Fermentary
           </p>
         </div>
         <div className="mt-8 lg:mt-0 lg:ml-8">
@@ -35,12 +34,12 @@ export default function NewsLetter() {
               </button>
             </div>
           </form>
-          <p className="mt-3 text-sm text-gray-500">
+          {/* <p className="mt-3 text-sm text-gray-500">
             We care about the protection of your data. Read our{' '}
             <a href="#" className="font-medium underline">
               Privacy Policy.
             </a>
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

@@ -1,93 +1,11 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 
-const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP'];
-const navigation = {
-  categories: [
-    {
-      name: 'Women',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
-          imageAlt:
-            'Models sitting back to back, wearing Basic Tee in black and bone.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
-          imageAlt:
-            'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-        },
-        {
-          name: 'Accessories',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-category-03.jpg',
-          imageAlt:
-            'Model wearing minimalist watch with black wristband and white watch face.',
-        },
-        {
-          name: 'Carry',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-category-04.jpg',
-          imageAlt:
-            'Model opening tan leather long wallet with credit card pockets and cash pouch.',
-        },
-      ],
-    },
-    {
-      name: 'Men',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-01.jpg',
-          imageAlt:
-            'Hats and sweaters on wood shelves next to various colors of t-shirts on hangers.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-02.jpg',
-          imageAlt: 'Model wearing light heather gray t-shirt.',
-        },
-        {
-          name: 'Accessories',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-03.jpg',
-          imageAlt:
-            'Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather gray body.',
-        },
-        {
-          name: 'Carry',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-01-men-category-04.jpg',
-          imageAlt:
-            'Model putting folded cash into slim card holder olive leather wallet with hand stitching.',
-        },
-      ],
-    },
-  ],
-  pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
-  ],
-};
 const sortOptions = [
-  { name: 'Newest', href: '#' },
-  { name: 'Price: Low to High', href: '#' },
-  { name: 'Price: High to Low', href: '#' },
+  { name: 'Newest' },
+  { name: 'Price: Low to High' },
+  { name: 'Price: High to Low' },
 ];
 const filters = [
   {
@@ -111,13 +29,12 @@ function classNames(...classes: string[]) {
 }
 
 export default function ProductsFilter() {
+  const [activeSort, setActiveSort] = useState(null);
   return (
     <div className="bg-gray-50">
       <div>
         <main>
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-            {/* <ProductsHeader /> */}
-            {/* Filters */}
             <section
               aria-labelledby="filter-heading"
               className="border-t border-gray-200 py-6"
@@ -127,6 +44,7 @@ export default function ProductsFilter() {
               </h2>
 
               <div className="flex items-center justify-between">
+                {/* SORT */}
                 <Menu as="div" className="relative z-10 inline-block text-left">
                   <div>
                     <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
@@ -150,17 +68,14 @@ export default function ProductsFilter() {
                     <Menu.Items className="origin-top-left absolute left-0 z-10 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <div className="py-1">
                         {sortOptions.map((option) => (
-                          <Menu.Item key={option.name}>
+                          <Menu.Item
+                            key={option.name}
+                            onClick={() => console.log(option.name)}
+                          >
                             {({ active }) => (
-                              <a
-                                href={option.href}
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm font-medium text-gray-900'
-                                )}
-                              >
+                              <div className="block px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 cursor-pointer">
                                 {option.name}
-                              </a>
+                              </div>
                             )}
                           </Menu.Item>
                         ))}
@@ -169,6 +84,7 @@ export default function ProductsFilter() {
                   </Transition>
                 </Menu>
 
+                {/* FILTER */}
                 <Popover.Group className="sm:flex sm:items-baseline sm:space-x-8">
                   {filters.map((section, sectionIdx) => (
                     <Popover
