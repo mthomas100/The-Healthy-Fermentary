@@ -22,7 +22,7 @@ export type ProductWithQuantity = Product & { quantity: number };
 type CartContext = {
   // cart contents is an array of objects
   cartContents: ProductWithQuantity[];
-  addToCart: (product: Product) => void;
+  addToCart: (product: ProductWithQuantity) => void;
   removeFromCart: (product: ProductWithQuantity) => void;
   modifyCartQuantity: (
     product: ProductWithQuantity,
@@ -30,10 +30,10 @@ type CartContext = {
   ) => void;
   emptyCart: () => void;
   cartItemTotal: number;
-  cartSubtotal: number;
+  cartSubTotal: number;
 };
 
-const LocalStateContext = createContext(null);
+const LocalStateContext = createContext<CartContext>({} as CartContext);
 const LocalStateProvider = LocalStateContext.Provider;
 
 const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {

@@ -102,15 +102,19 @@ const filters = [
     id: 'filter',
     name: 'Filter',
     options: [
-      { value: 'All', label: 'All' },
-      { value: 'New', label: 'New' },
-      { value: 'Popular', label: 'Popular' },
-      { value: 'Recommended by Us', label: 'Recommended by Us' },
+      { value: 'All', label: 'All', checked: false },
+      { value: 'New', label: 'New', checked: false },
+      { value: 'Popular', label: 'Popular', checked: false },
+      {
+        value: 'Recommended by Us',
+        label: 'Recommended by Us',
+        checked: false,
+      },
     ],
   },
 ];
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
@@ -154,7 +158,7 @@ export default function ProductsFilter() {
                     <Menu.Items className="origin-top-left absolute left-0 z-10 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <div className="py-1">
                         {sortOptions.map((option) => (
-                          <Menu.Item key={option}>
+                          <Menu.Item key={option.name}>
                             {({ active }) => (
                               <a
                                 href={option.href}

@@ -10,7 +10,6 @@ const ModifyCartSelector: React.FC<ModifyCartSelectorProps> = ({ product }) => {
   const { title, quantity, id } = product;
 
   const handleModifyCartQuantity = (newValue: string) => {
-    console.log('handleModifyCartQuantity', newValue, product);
     modifyCartQuantity(product, parseInt(newValue));
   };
 

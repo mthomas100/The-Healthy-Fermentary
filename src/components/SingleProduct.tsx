@@ -30,7 +30,7 @@ import AddToCartButton from './AddToCartButton';
 // };
 const reviews = { average: 4, totalCount: 1624 };
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
@@ -40,7 +40,6 @@ type SingleProductProps = {
 
 const SingleProduct: React.FC<SingleProductProps> = ({ product }) => {
   // const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
-
   return (
     <div className="bg-white">
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">

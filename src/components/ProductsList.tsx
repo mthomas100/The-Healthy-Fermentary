@@ -22,16 +22,18 @@ const ProductsList: React.FC<ProductsProps> = ({ products }) => {
                 </div>
 
                 <h3 className="mt-4 text-sm text-gray-700 font-normal">
-                  <a href={product.href}>
-                    <span className="absolute inset-0" />
-                    {product.title}
-                  </a>
+                  <span className="absolute inset-0" />
+                  {product.title}
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
                   {/* TODO: Make categories appear in a bubble */}
-                  {product.categories
-                    ?.map((category) => category.name)
-                    .join(',  ')}
+                  {product.categories && product.categories.length > 0 ? (
+                    product.categories
+                      ?.map((category) => category?.name)
+                      .join(',  ')
+                  ) : (
+                    <br />
+                  )}
                 </p>
                 <p className="mt-1 text-sm font-medium text-gray-900">
                   ${product.price}

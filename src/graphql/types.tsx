@@ -40,9 +40,9 @@ export type Category = {
   _id: Scalars['ID'];
   createdAt: Scalars['DateTime'];
   id: Scalars['ID'];
-  name?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
   products?: Maybe<Array<Maybe<Product>>>;
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   updatedAt: Scalars['DateTime'];
 };
 
@@ -115,9 +115,9 @@ export type CategoryGroupBy = {
 
 export type CategoryInput = {
   created_by?: InputMaybe<Scalars['ID']>;
-  name?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
   products?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  slug?: InputMaybe<Scalars['String']>;
+  slug: Scalars['String'];
   updated_by?: InputMaybe<Scalars['ID']>;
 };
 
@@ -712,7 +712,7 @@ export type Product = {
   id: Scalars['ID'];
   image?: Maybe<UploadFile>;
   price: Scalars['Float'];
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   status: Enum_Product_Status;
   title: Scalars['String'];
   updatedAt: Scalars['DateTime'];
@@ -843,7 +843,7 @@ export type ProductInput = {
   description: Scalars['String'];
   image?: InputMaybe<Scalars['ID']>;
   price?: InputMaybe<Scalars['Float']>;
-  slug?: InputMaybe<Scalars['String']>;
+  slug: Scalars['String'];
   status?: InputMaybe<Enum_Product_Status>;
   title: Scalars['String'];
   updated_by?: InputMaybe<Scalars['ID']>;
@@ -1811,16 +1811,16 @@ export type UpdateUserPayload = {
 
 export type FragmentImageFragment = { __typename?: 'UploadFile', id: string, createdAt: any, updatedAt: any, name: string, alternativeText?: string | null | undefined, caption?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined, formats?: any | null | undefined, hash: string, ext?: string | null | undefined, mime: string, size: number, url: string };
 
-export type FragmentCategoryFragment = { __typename: 'Category', _id: string, createdAt: any, id: string, name?: string | null | undefined, slug?: string | null | undefined, updatedAt: any };
+export type FragmentCategoryFragment = { __typename: 'Category', _id: string, createdAt: any, id: string, name: string, slug: string, updatedAt: any };
 
-export type FragmentProductFragment = { __typename: 'Product', _id: string, createdAt: any, description: string, id: string, price: number, slug?: string | null | undefined, status: Enum_Product_Status, title: string, updatedAt: any, image?: { __typename?: 'UploadFile', id: string, createdAt: any, updatedAt: any, name: string, alternativeText?: string | null | undefined, caption?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined, formats?: any | null | undefined, hash: string, ext?: string | null | undefined, mime: string, size: number, url: string } | null | undefined };
+export type FragmentProductFragment = { __typename: 'Product', _id: string, createdAt: any, description: string, id: string, price: number, slug: string, status: Enum_Product_Status, title: string, updatedAt: any, image?: { __typename?: 'UploadFile', id: string, createdAt: any, updatedAt: any, name: string, alternativeText?: string | null | undefined, caption?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined, formats?: any | null | undefined, hash: string, ext?: string | null | undefined, mime: string, size: number, url: string } | null | undefined };
 
 export type All_Products_QueryQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type All_Products_QueryQuery = { __typename?: 'Query', products?: Array<{ __typename?: 'Product', id: string, title: string, description: string, price: number, slug?: string | null | undefined, image?: { __typename?: 'UploadFile', url: string } | null | undefined, categories?: Array<{ __typename: 'Category', _id: string, createdAt: any, id: string, name?: string | null | undefined, slug?: string | null | undefined, updatedAt: any } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
+export type All_Products_QueryQuery = { __typename?: 'Query', products?: Array<{ __typename?: 'Product', id: string, title: string, description: string, price: number, slug: string, image?: { __typename?: 'UploadFile', url: string } | null | undefined, categories?: Array<{ __typename: 'Category', _id: string, createdAt: any, id: string, name: string, slug: string, updatedAt: any } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
 
 export const FragmentCategoryFragmentDoc = gql`
     fragment fragmentCategory on Category {
