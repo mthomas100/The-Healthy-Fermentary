@@ -711,7 +711,7 @@ export type Product = {
   description: Scalars['String'];
   id: Scalars['ID'];
   image?: Maybe<UploadFile>;
-  price?: Maybe<Scalars['Float']>;
+  price: Scalars['Float'];
   slug?: Maybe<Scalars['String']>;
   status: Enum_Product_Status;
   title: Scalars['String'];
@@ -1813,14 +1813,14 @@ export type FragmentImageFragment = { __typename?: 'UploadFile', id: string, cre
 
 export type FragmentCategoryFragment = { __typename: 'Category', _id: string, createdAt: any, id: string, name?: string | null | undefined, slug?: string | null | undefined, updatedAt: any };
 
-export type FragmentProductFragment = { __typename: 'Product', _id: string, createdAt: any, description: string, id: string, price?: number | null | undefined, slug?: string | null | undefined, status: Enum_Product_Status, title: string, updatedAt: any, image?: { __typename?: 'UploadFile', id: string, createdAt: any, updatedAt: any, name: string, alternativeText?: string | null | undefined, caption?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined, formats?: any | null | undefined, hash: string, ext?: string | null | undefined, mime: string, size: number, url: string } | null | undefined };
+export type FragmentProductFragment = { __typename: 'Product', _id: string, createdAt: any, description: string, id: string, price: number, slug?: string | null | undefined, status: Enum_Product_Status, title: string, updatedAt: any, image?: { __typename?: 'UploadFile', id: string, createdAt: any, updatedAt: any, name: string, alternativeText?: string | null | undefined, caption?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined, formats?: any | null | undefined, hash: string, ext?: string | null | undefined, mime: string, size: number, url: string } | null | undefined };
 
 export type All_Products_QueryQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type All_Products_QueryQuery = { __typename?: 'Query', products?: Array<{ __typename?: 'Product', id: string, title: string, description: string, price?: number | null | undefined, slug?: string | null | undefined, image?: { __typename?: 'UploadFile', url: string } | null | undefined, categories?: Array<{ __typename: 'Category', _id: string, createdAt: any, id: string, name?: string | null | undefined, slug?: string | null | undefined, updatedAt: any } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
+export type All_Products_QueryQuery = { __typename?: 'Query', products?: Array<{ __typename?: 'Product', id: string, title: string, description: string, price: number, slug?: string | null | undefined, image?: { __typename?: 'UploadFile', url: string } | null | undefined, categories?: Array<{ __typename: 'Category', _id: string, createdAt: any, id: string, name?: string | null | undefined, slug?: string | null | undefined, updatedAt: any } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
 
 export const FragmentCategoryFragmentDoc = gql`
     fragment fragmentCategory on Category {

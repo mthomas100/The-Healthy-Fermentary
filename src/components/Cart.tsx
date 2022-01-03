@@ -1,5 +1,6 @@
 import { CheckIcon, ClockIcon } from '@heroicons/react/solid';
 import { useCart } from '../lib/cartState';
+import ModifyCartSelector from './ModifyCartSelector';
 
 // const products = [
 //   {
@@ -29,7 +30,7 @@ import { useCart } from '../lib/cartState';
 // ];
 
 export default function Cart() {
-  const { cartContents: cart } = useCart();
+  const { cartContents: cart, removeFromCart, modifyCartQuantity } = useCart();
   return (
     <div className="bg-white">
       <div className="max-w-4xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
@@ -84,30 +85,12 @@ export default function Cart() {
                       </div>
 
                       <div className="mt-4 flex items-center sm:block sm:absolute sm:top-0 sm:left-1/2 sm:mt-0">
-                        <label
-                          htmlFor={`quantity-${cartItem.title}`}
-                          className="sr-only"
-                        >
-                          Quantity, {cartItem.quantity}
-                        </label>
-                        <select
-                          id={`quantity-${cartItem.title}`}
-                          name={`quantity-${cartItem.title}`}
-                          className="block max-w-full rounded-md border border-gray-300 py-1.5 text-base leading-5 font-medium text-gray-700 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        >
-                          <option value={1}>1</option>
-                          <option value={2}>2</option>
-                          <option value={3}>3</option>
-                          <option value={4}>4</option>
-                          <option value={5}>5</option>
-                          <option value={6}>6</option>
-                          <option value={7}>7</option>
-                          <option value={8}>8</option>
-                        </select>
-
+                        <ModifyCartSelector product={cartItem} />
+                        {/* / TODO: INVESTIVATE WHY NO TYPE ERROR IF NO PROPS PROVIDED */}
                         <button
                           type="button"
                           className="ml-4 text-sm font-medium text-indigo-600 hover:text-indigo-500 sm:ml-0 sm:mt-3"
+                          onClick={() => removeFromCart(cartItem)}
                         >
                           <span>Remove</span>
                         </button>

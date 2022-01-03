@@ -17,7 +17,7 @@ import { Product } from '../graphql/types';
 //   product: Product;
 // };
 
-type ProductWithQuantity = Product & { quantity: number };
+export type ProductWithQuantity = Product & { quantity: number };
 
 type CartContext = {
   // cart contents is an array of objects
@@ -30,6 +30,7 @@ type CartContext = {
   ) => void;
   emptyCart: () => void;
   cartItemTotal: number;
+  cartSubtotal: number;
 };
 
 const LocalStateContext = createContext(null);
@@ -39,6 +40,7 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // CART CONTENTS & MODIFICATION
   const [cartContents, setCartContents] = useState<ProductWithQuantity[]>([]);
   const [cartItemTotal, setCartItemTotal] = useState(0);
+  const [cartSubTotal, setCartSubTotal] = useState(0);
 
   function addToCart(product = {} as ProductWithQuantity) {
     const cartProduct = cloneDeep(product);
@@ -74,8 +76,8 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
     // item already exists in our cart
     if (cartIndex !== -1) {
-      cartContents[cartIndex].quantity += newQuantity;
-      setCartContents([...cartContents]);
+      cartContents[cartIndex].quantity = newQuantity;
+      return setCartContents([...cartContents]);
     }
   }
 
@@ -92,6 +94,12 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setCartItemTotal(
       cartContents.reduce((tally, item) => tally + item.quantity, 0)
     );
+    setCartSubTotal(
+      cartContents.reduce(
+        (tally, item) => tally + item.price * item.quantity,
+        0
+      )
+    );
   }, [cartContents, cartItemTotal]);
 
   useEffect(() => {
@@ -107,6 +115,7 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         modifyCartQuantity,
         emptyCart,
         cartItemTotal,
+        cartSubTotal,
       }}
     >
       {children}

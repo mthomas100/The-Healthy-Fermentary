@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import CategoryFilters from '../components/CategoryFilters';
 import ProductsFilter from '../components/ProductsFilter';
 import Hero from '../components/Hero';
-import ProductsDELETE from '../components/ProductsDELETE';
 import { ALL_PRODUCTS_QUERY } from '../graphql/queries';
 import { Product } from '../graphql/types';
 import client from '../lib/apolloClient';

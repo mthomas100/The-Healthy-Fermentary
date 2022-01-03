@@ -8,6 +8,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline';
 import Link from 'next/link';
+import { useCart } from '../lib/cartState';
 
 const user = {
   name: 'Tom Cook',
@@ -32,8 +33,10 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const { cartItemTotal } = useCart();
+
   return (
-    <Disclosure as="header" className="bg-white shadow">
+    <Disclosure as="header" className="bg-white shadow-md sticky top-0 z-50">
       {() => (
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
           <div className="relative h-16 flex justify-between items-center">
@@ -58,7 +61,7 @@ export default function Example() {
                     aria-hidden="true"
                   />
                   <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                    0
+                    {cartItemTotal}
                   </span>
                   <span className="sr-only">items in cart, view bag</span>
                 </a>

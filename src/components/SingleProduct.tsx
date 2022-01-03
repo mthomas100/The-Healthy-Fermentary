@@ -7,7 +7,7 @@ import {
 import { RadioGroup } from '@headlessui/react';
 import { ShieldCheckIcon } from '@heroicons/react/outline';
 import { Product } from '../graphql/types';
-import AddToCart from './AddToCart';
+import AddToCartButton from './AddToCartButton';
 
 // const product = {
 //   name: 'Everyday Ruck Snack',
@@ -153,7 +153,7 @@ const SingleProduct: React.FC<SingleProductProps> = ({ product }) => {
 
             <form>
               <div className="mt-10">
-                <AddToCart product={product} />
+                <AddToCartButton product={product} />
               </div>
               <div className="mt-6 text-center">
                 <a href="#" className="group inline-flex text-base font-medium">
