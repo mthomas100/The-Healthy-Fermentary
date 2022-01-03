@@ -4,9 +4,11 @@ import SingleProduct from '../../components/SingleProduct';
 import { ALL_PRODUCTS_QUERY } from '../../graphql/queries';
 import { Product } from '../../graphql/types';
 import client from '../../lib/apolloClient';
+import { ProductWithQuantity } from '../../lib/cartState';
+import { ProductsQueryType } from '../../types/ProductsQueryType';
 
 type SingleProductPageProps = {
-  product: Product;
+  product: ProductWithQuantity;
 };
 
 const SingleProductPage: React.FC<SingleProductPageProps> = ({ product }) => {
@@ -27,7 +29,7 @@ export async function getStaticPaths() {
   // GET ALL PRODUCTS FROM API
 
   /* eslint-disable */
-    const { data: { products }} = await client.query({
+    const { data: { products }} = await client.query<ProductsQueryType>({
         query: ALL_PRODUCTS_QUERY,
     });
     /* eslint-enable */
@@ -47,7 +49,7 @@ export async function getStaticProps({
   params: { slug: string };
 }) {
   /* eslint-disable */
-    const { data: { products } } = await client.query({
+    const { data: { products } } = await client.query<ProductsQueryType>({
         query: ALL_PRODUCTS_QUERY,
         variables: {
             slug

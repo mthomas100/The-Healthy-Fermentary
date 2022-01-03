@@ -32,7 +32,7 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Example() {
+const Header: React.FC = () => {
   const { cartItemTotal } = useCart();
 
   return (
@@ -72,4 +72,6 @@ export default function Example() {
       )}
     </Disclosure>
   );
-}
+};
+
+export default Header;

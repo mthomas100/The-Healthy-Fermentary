@@ -1,9 +1,8 @@
 import React from 'react';
-import { Product } from '../graphql/types';
-import { useCart } from '../lib/cartState';
+import { ProductWithQuantity, useCart } from '../lib/cartState';
 
 type AddToCartProps = {
-  product: Product;
+  product: ProductWithQuantity;
 };
 
 const AddToCart: React.FC<AddToCartProps> = ({ product }) => {

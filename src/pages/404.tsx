@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 /* This example requires Tailwind CSS v2.0+ */
 export default function FourOhFour() {
   return (
@@ -15,14 +17,16 @@ export default function FourOhFour() {
           <main className="flex-grow flex flex-col bg-white">
             <div className="flex-grow mx-auto max-w-7xl w-full flex flex-col px-4 sm:px-6 lg:px-8">
               <div className="flex-shrink-0 pt-10 sm:pt-16">
-                <a href="/" className="inline-flex">
-                  <span className="sr-only">Workflow</span>
-                  <img
-                    className="h-12 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
-                    alt=""
-                  />
-                </a>
+                {/* <Link href="/">
+                  <a className="inline-flex">
+                    <span className="sr-only">Workflow</span>
+                    <img
+                      className="h-12 w-auto"
+                      src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
+                      alt=""
+                    />
+                  </a>
+                </Link> */}
               </div>
               <div className="flex-shrink-0 my-auto py-16 sm:py-32">
                 <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
@@ -35,48 +39,15 @@ export default function FourOhFour() {
                   Sorry, we couldn’t find the page you’re looking for.
                 </p>
                 <div className="mt-6">
-                  <a
-                    href="#"
-                    className="text-base font-medium text-indigo-600 hover:text-indigo-500"
-                  >
-                    Go back home<span aria-hidden="true"> &rarr;</span>
-                  </a>
+                  <Link href="/">
+                    <a className="text-base font-medium text-indigo-600 hover:text-indigo-500">
+                      Go back home<span aria-hidden="true"> &rarr;</span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
           </main>
-          <footer className="flex-shrink-0 bg-gray-50">
-            <div className="mx-auto max-w-7xl w-full px-4 py-16 sm:px-6 lg:px-8">
-              <nav className="flex space-x-4">
-                <a
-                  href="#"
-                  className="text-sm font-medium text-gray-500 hover:text-gray-600"
-                >
-                  Contact Support
-                </a>
-                <span
-                  className="inline-block border-l border-gray-300"
-                  aria-hidden="true"
-                />
-                <a
-                  href="#"
-                  className="text-sm font-medium text-gray-500 hover:text-gray-600"
-                >
-                  Status
-                </a>
-                <span
-                  className="inline-block border-l border-gray-300"
-                  aria-hidden="true"
-                />
-                <a
-                  href="#"
-                  className="text-sm font-medium text-gray-500 hover:text-gray-600"
-                >
-                  Twitter
-                </a>
-              </nav>
-            </div>
-          </footer>
         </div>
         <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
           <img

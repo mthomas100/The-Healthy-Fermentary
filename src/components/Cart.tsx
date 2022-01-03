@@ -42,10 +42,7 @@ export default function Cart() {
           <div>
             <h2 className="sr-only">Items in your shopping cart</h2>
 
-            <ul
-              role="list"
-              className="border-t border-b border-gray-200 divide-y divide-gray-200"
-            >
+            <ul className="border-t border-b border-gray-200 divide-y divide-gray-200">
               {cart.map((cartItem) => (
                 <li key={cartItem.id} className="flex py-6 sm:py-10">
                   <div className="flex-shrink-0">

@@ -6,8 +6,8 @@ import {
 } from '@heroicons/react/solid';
 import { RadioGroup } from '@headlessui/react';
 import { ShieldCheckIcon } from '@heroicons/react/outline';
-import { Product } from '../graphql/types';
 import AddToCartButton from './AddToCartButton';
+import { ProductWithQuantity } from '../lib/cartState';
 
 // const product = {
 //   name: 'Everyday Ruck Snack',
@@ -35,7 +35,7 @@ function classNames(...classes: string[]) {
 }
 
 type SingleProductProps = {
-  product: Product;
+  product: ProductWithQuantity;
 };
 
 const SingleProduct: React.FC<SingleProductProps> = ({ product }) => {
