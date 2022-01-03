@@ -1,12 +1,5 @@
-import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { SearchIcon } from '@heroicons/react/solid';
-import {
-  BellIcon,
-  MenuIcon,
-  ShoppingBagIcon,
-  XIcon,
-} from '@heroicons/react/outline';
+import { ShoppingBagIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import { useCart } from '../lib/cartState';
 

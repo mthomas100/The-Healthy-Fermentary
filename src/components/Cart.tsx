@@ -1,4 +1,3 @@
-import { CheckIcon, ClockIcon } from '@heroicons/react/solid';
 import { useCart } from '../lib/cartState';
 import CheckoutButton from './CheckoutButton';
 import ModifyCartSelector from './ModifyCartSelector';

@@ -3,7 +3,7 @@ export default function Hero() {
     'https://res.cloudinary.com/mthomas/image/upload/v1637687534/satyn-ecommerce/large_kombucha_Fruit_d95b969dfa_cec9e031d7.jpg';
 
   return (
-    <div className="relative bg-indigo-800">
+    <div className="relative bg-white">
       <div className="absolute inset-0">
         <img className="w-full h-full object-cover" src={imageUrl} alt="" />
 

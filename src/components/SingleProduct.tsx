@@ -1,10 +1,4 @@
-import { useState } from 'react';
-import {
-  CheckIcon,
-  QuestionMarkCircleIcon,
-  StarIcon,
-} from '@heroicons/react/solid';
-import { RadioGroup } from '@headlessui/react';
+import { CheckIcon, StarIcon } from '@heroicons/react/solid';
 import { ShieldCheckIcon } from '@heroicons/react/outline';
 import AddToCartButton from './AddToCartButton';
 import { ProductWithQuantity } from '../lib/cartState';

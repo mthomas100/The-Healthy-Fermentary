@@ -1,14 +1,6 @@
-import { Fragment, useState } from 'react';
-import {
-  Dialog,
-  Disclosure,
-  Menu,
-  Popover,
-  Tab,
-  Transition,
-} from '@headlessui/react';
+import { Fragment } from 'react';
+import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import ProductsHeader from './ProductsHeader';
 
 const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP'];
 const navigation = {
