@@ -2,35 +2,8 @@ import { useCart } from '../lib/cartState';
 import CheckoutButton from './CheckoutButton';
 import ModifyCartSelector from './ModifyCartSelector';
 
-// const products = [
-//   {
-//     id: 1,
-//     name: 'Nomad Tumbler',
-//     href: '#',
-//     price: '$35.00',
-//     color: 'White',
-//     inStock: true,
-//     imageSrc:
-//       'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-03.jpg',
-//     imageAlt: 'Insulated bottle with white base and black snap lid.',
-//   },
-//   {
-//     id: 2,
-//     name: 'Basic Tee',
-//     href: '#',
-//     price: '$32.00',
-//     color: 'Sienna',
-//     inStock: true,
-//     size: 'Large',
-//     imageSrc:
-//       'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-01.jpg',
-//     imageAlt: "Front of men's Basic Tee in sienna.",
-//   },
-//   // More products...
-// ];
-
 export default function Cart() {
-  const { cartContents: cart, removeFromCart, modifyCartQuantity } = useCart();
+  const { cartContents: cart, removeFromCart } = useCart();
   return (
     <div className="bg-white">
       <div className="max-w-4xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">

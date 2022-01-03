@@ -14,7 +14,7 @@ const SingleProductPage: React.FC<SingleProductPageProps> = ({ product }) => {
   return (
     <>
       <Head>
-        <title>{product.title}</title>
+        <title>The Healthy Fermentary - {product.title}</title>
       </Head>
 
       <SingleProduct product={product} />

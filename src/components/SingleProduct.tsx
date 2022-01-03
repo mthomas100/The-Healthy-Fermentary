@@ -3,25 +3,6 @@ import { ShieldCheckIcon } from '@heroicons/react/outline';
 import AddToCartButton from './AddToCartButton';
 import { ProductWithQuantity } from '../lib/cartState';
 
-// const product = {
-//   name: 'Everyday Ruck Snack',
-//   href: '#',
-//   price: '$220',
-//   description:
-//     "Don't compromise on snack-carrying capacity with this lightweight and spacious bag. The drawstring top keeps all your favorite chips, crisps, fries, biscuits, crackers, and cookies secure.",
-//   imageSrc:
-//     'https://tailwindui.com/img/ecommerce-images/product-page-04-featured-product-shot.jpg',
-//   imageAlt:
-//     'Model wearing light green backpack with black canvas straps and front zipper pouch.',
-//   breadcrumbs: [
-//     { id: 1, name: 'Travel', href: '#' },
-//     { id: 2, name: 'Bags', href: '#' },
-//   ],
-//   sizes: [
-//     { name: '18L', description: 'Perfect for a reasonable amount of snacks.' },
-//     { name: '20L', description: 'Enough room for a serious amount of snacks.' },
-//   ],
-// };
 const reviews = { average: 4, totalCount: 1624 };
 
 function classNames(...classes: string[]) {
@@ -33,7 +14,6 @@ type SingleProductProps = {
 };
 
 const SingleProduct: React.FC<SingleProductProps> = ({ product }) => {
-  // const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   return (
     <div className="bg-white">
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">

@@ -102,10 +102,6 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     );
   }, [cartContents, cartItemTotal]);
 
-  useEffect(() => {
-    console.log(cartContents);
-  }, [cartContents]);
-
   return (
     <LocalStateProvider
       value={{
