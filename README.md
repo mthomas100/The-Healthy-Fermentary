@@ -7,14 +7,6 @@
 
 In this project I engineered an eCommerce application for a customer in the process of starting a fermented beverage delivery service, designed reusable react components to enable sophisticated shopping experience while maintaining a clean codebase, conceptualized and implemented distinct desktop-centric and mobile-centric designs, communicated with, implemented requests from, and updated customer throughout the process from conception to completion. 
 
-### This Project Features the Following:
-* A distinct shopping cart experience Mobile and for Desktop, animated with Framer Motion
-* eCommerce features including CRUD functionality for cart items
-* Secure payments via Stripe.js
-* Backend shopping cart validation for fraudulent transaction prevention
-* Statically Generated Pages for quicker load times
-* Blurred image thumbnail loading - used for better site experience for users with slow internet connections
-
 # Technologies Used
 
 ## Superplate
