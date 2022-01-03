@@ -1,16 +1,13 @@
 
-[Live Version of Project](https://thehealthyfermentary.com)
+**[Live Version of Project](https://thehealthyfermentary.com)**
 
 -----------
 
-# Project Description
+## Project Description
 
 In this project I engineered an eCommerce application for a customer in the process of starting a fermented beverage delivery service, designed reusable react components to enable sophisticated shopping experience while maintaining a clean codebase, conceptualized and implemented distinct desktop-centric and mobile-centric designs, communicated with, implemented requests from, and updated customer throughout the process from conception to completion. 
 
-
------------
-# Technologies Used
-
+## _Tech Stack:_ ##
 
 ## TailwindCSS
 
