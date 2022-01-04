@@ -1,19 +1,21 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Hero from '../components/Hero';
-import { ALL_PRODUCTS_QUERY } from '../graphql/queries';
-import { Product } from '../graphql/types';
+import { ALL_CATEGORIES_QUERY, ALL_PRODUCTS_QUERY } from '../graphql/queries';
+import { Category } from '../graphql/types';
 import client from '../lib/apolloClient';
 import NewsLetter from '../components/Newsletter';
 import ProductsShowcase from '../components/shopping/ProductsShowcase';
 import { ProductsQueryType } from '../types/ProductsQueryType';
 import { ProductWithQuantity } from '../types/ProductWithQuantity';
+import { CategoriesQueryType } from '../types/CategoriesQueryType';
 
 type HomeProps = {
   products: ProductWithQuantity[];
+  categories: Category[];
 };
 
-const Home: NextPage<HomeProps> = ({ products }) => {
+const Home: NextPage<HomeProps> = ({ products, categories }) => {
   return (
     <>
       <Head>
@@ -22,7 +24,7 @@ const Home: NextPage<HomeProps> = ({ products }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
-      <ProductsShowcase products={products} />
+      <ProductsShowcase products={products} categories={categories} />
       <NewsLetter />
     </>
   );
@@ -37,11 +39,16 @@ export const getStaticProps: GetStaticProps = async () => {
     query: ALL_PRODUCTS_QUERY,
   });
 
+  const { data: { categories }} = await client.query<CategoriesQueryType>({
+    query: ALL_CATEGORIES_QUERY,
+  });
+
   /* eslint-enable */
 
   return {
     props: {
       products,
+      categories,
     },
   };
 };

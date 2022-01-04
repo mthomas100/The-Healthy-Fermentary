@@ -1,3 +1,4 @@
+import { Category } from '../../graphql/types';
 import Filter from '../filters/Filter';
 import Sort from '../filters/Sort';
 
@@ -5,7 +6,11 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function ProductsFilter() {
+type ProductsFilterProps = {
+  categories: Category[];
+};
+
+const ProductsFilter: React.FC<ProductsFilterProps> = ({ categories }) => {
   return (
     <div className="bg-gray-50">
       <div>
@@ -21,7 +26,7 @@ export default function ProductsFilter() {
 
               <div className="flex items-center justify-between">
                 <Sort />
-                <Filter />
+                <Filter categories={categories} />
               </div>
             </section>
           </div>
@@ -29,4 +34,6 @@ export default function ProductsFilter() {
       </div>
     </div>
   );
-}
+};
+
+export default ProductsFilter;

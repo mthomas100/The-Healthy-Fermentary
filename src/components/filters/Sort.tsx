@@ -1,16 +1,16 @@
 import { Menu, Transition } from '@headlessui/react';
 import React, { Fragment, useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
+import { useFilter } from '../../lib/filterState';
 
 const sortOptions = [
-  { name: 'Newest' },
-  { name: 'Price: Low to High' },
-  { name: 'Price: High to Low' },
+  { name: 'Newest', value: 'newest' },
+  { name: 'Price: Low to High', value: 'price-asc' },
+  { name: 'Price: High to Low', value: 'price-desc' },
 ];
 
 export default function Sort() {
-  const [activeSort, setActiveSort] = useState('');
-
+  const { setActiveSort } = useFilter();
   return (
     <Menu as="div" className="relative z-10 inline-block text-left">
       <div>
@@ -37,7 +37,7 @@ export default function Sort() {
             {sortOptions.map((option) => (
               <Menu.Item
                 key={option.name}
-                onClick={() => setActiveSort(option.name)}
+                onClick={() => setActiveSort(option.value)}
               >
                 {({ active }) => (
                   <div className="block px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 cursor-pointer">

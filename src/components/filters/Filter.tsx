@@ -1,6 +1,7 @@
 import { Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import React, { Fragment } from 'react';
+import { Category } from '../../graphql/types';
 
 const filters = [
   {
@@ -19,7 +20,13 @@ const filters = [
   },
 ];
 
-export default function Filter() {
+// TODO: Replace hardcoded filters above with dynamic filters from the server (see below)
+
+type FilterProps = {
+  categories: Category[];
+};
+
+const Filter: React.FC<FilterProps> = ({ categories }) => {
   return (
     <Popover.Group className="sm:flex sm:items-baseline sm:space-x-8">
       {filters.map((section, sectionIdx) => (
@@ -80,4 +87,6 @@ export default function Filter() {
       ))}
     </Popover.Group>
   );
-}
+};
+
+export default Filter;

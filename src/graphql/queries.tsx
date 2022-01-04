@@ -1,6 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import gql from 'graphql-tag';
 
+import { Category } from './types';
+
 // FRAGMENTS
 const FRAGMENT_IMAGE = gql`
   fragment fragmentImage on UploadFile {
@@ -57,18 +59,42 @@ export const FRAGMENT_PRODUCT = gql`
 export const ALL_PRODUCTS_QUERY = gql`
   query ALL_PRODUCTS_QUERY($slug: String) {
     products(where: { slug: $slug }) {
-      id
-      title
-      description
-      image {
-        url
-      }
-      price
-      slug
+      __typename
+      _id
       categories {
         ...fragmentCategory
       }
+      createdAt
+      description
+      id
+      image {
+        ...fragmentImage
+      }
+      price
+      slug
+      status
+      title
+      updatedAt
     }
   }
   ${FRAGMENT_CATEGORY}
+  ${FRAGMENT_IMAGE}
+`;
+
+export const ALL_CATEGORIES_QUERY = gql`
+  query ALL_CATEGORIES_QUERY {
+    categories {
+      __typename
+      _id
+      createdAt
+      id
+      name
+      products {
+        ...fragmentProduct
+      }
+      slug
+      updatedAt
+    }
+  }
+  ${FRAGMENT_PRODUCT}
 `;
