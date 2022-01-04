@@ -2,6 +2,7 @@ import { Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import React, { Fragment } from 'react';
 import { Category } from '../../graphql/types';
+import { useFilter } from '../../lib/filterState';
 
 const filters = [
   {
@@ -27,6 +28,7 @@ type FilterProps = {
 };
 
 const Filter: React.FC<FilterProps> = ({ categories }) => {
+  const { setActiveFilters } = useFilter();
   return (
     <Popover.Group className="sm:flex sm:items-baseline sm:space-x-8">
       {filters.map((section, sectionIdx) => (

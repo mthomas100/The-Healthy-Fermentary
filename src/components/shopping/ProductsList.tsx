@@ -12,9 +12,6 @@ const ProductsList: React.FC<ProductsProps> = ({ products }) => {
   const { filterData } = useFilter();
   const filteredProducts = filterData(products);
 
-  useEffect(() => {
-    console.log(filteredProducts);
-  }, [filteredProducts]);
   return (
     <div className="bg-white">
       <div className="max-w-full mx-auto pb-16 px-4 sm:pb-24 sm:px-6 lg:px-8">

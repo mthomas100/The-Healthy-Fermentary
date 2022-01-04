@@ -1,16 +1,11 @@
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, { createContext, ReactNode, useContext, useState } from 'react';
 import { ProductWithQuantity } from '../types/ProductWithQuantity';
 
 type FilterContext = {
   setActiveSort: (sort: string) => void;
   filterData: (data: ProductWithQuantity[]) => ProductWithQuantity[];
   activeSort: string;
+  setActiveFilters: (filters: string[]) => void;
 };
 
 const LocalStateContext = createContext<FilterContext>({} as FilterContext);
@@ -20,6 +15,7 @@ const FilterStateProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [activeSort, setActiveSort] = useState('');
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   const filterData = (data: ProductWithQuantity[]): ProductWithQuantity[] => {
     // Reorder data by price from lowest to highest
@@ -40,7 +36,9 @@ const FilterStateProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   return (
-    <LocalStateProvider value={{ setActiveSort, activeSort, filterData }}>
+    <LocalStateProvider
+      value={{ setActiveSort, activeSort, filterData, setActiveFilters }}
+    >
       {children}
     </LocalStateProvider>
   );
