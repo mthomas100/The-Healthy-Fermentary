@@ -1,11 +1,12 @@
 import React from 'react';
-import { ProductWithQuantity, useCart } from '../lib/cartState';
+import { useCart } from '../lib/cartState';
+import { ProductWithQuantity } from '../types/ProductWithQuantity';
 
 type AddToCartProps = {
   product: ProductWithQuantity;
 };
 
-const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
+const AddToCartButton: React.FC<AddToCartProps> = ({ product }) => {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
@@ -23,4 +24,4 @@ const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
   );
 };
 
-export default AddToCart;
+export default AddToCartButton;

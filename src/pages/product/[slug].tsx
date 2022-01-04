@@ -1,16 +1,17 @@
 // import SingleProduct from 'components/general/SingleProduct';
+import { GetStaticPaths, GetStaticPathsResult, NextPage } from 'next';
 import Head from 'next/head';
-import SingleProduct from '../../components/SingleProduct';
+import SingleProduct from '../../components/shopping/SingleProduct';
 import { ALL_PRODUCTS_QUERY } from '../../graphql/queries';
 import client from '../../lib/apolloClient';
-import { ProductWithQuantity } from '../../lib/cartState';
 import { ProductsQueryType } from '../../types/ProductsQueryType';
+import { ProductWithQuantity } from '../../types/ProductWithQuantity';
 
 type SingleProductPageProps = {
   product: ProductWithQuantity;
 };
 
-const SingleProductPage: React.FC<SingleProductPageProps> = ({ product }) => {
+const SingleProductPage: NextPage<SingleProductPageProps> = ({ product }) => {
   return (
     <>
       <Head>
@@ -24,7 +25,7 @@ const SingleProductPage: React.FC<SingleProductPageProps> = ({ product }) => {
 
 export default SingleProductPage;
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   // GET ALL PRODUCTS FROM API
 
   /* eslint-disable */
@@ -34,13 +35,15 @@ export async function getStaticPaths() {
     /* eslint-enable */
 
   // GET THE PATHS (SLUGS) FOR ALL PRODUCTS
-  const paths = products.map(({ slug }: { slug: string }) => ({
-    params: { slug },
-  }));
+  const paths = products.map(
+    ({ slug }: { slug: ProductWithQuantity['slug'] }) => ({
+      params: { slug },
+    })
+  ) as GetStaticPathsResult['paths'];
 
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
-}
+};
 
 export async function getStaticProps({
   params: { slug },

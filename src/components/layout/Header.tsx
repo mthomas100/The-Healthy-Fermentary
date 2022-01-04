@@ -1,7 +1,7 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { ShoppingBagIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
-import { useCart } from '../lib/cartState';
+import { useCart } from '../../lib/cartState';
 
 const user = {
   name: 'Tom Cook',

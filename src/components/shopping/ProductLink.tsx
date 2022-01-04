@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Maybe, Scalars } from '../graphql/types';
+import { Maybe, Scalars } from '../../graphql/types';
 
 type ProductProps = {
   children: React.ReactNode;

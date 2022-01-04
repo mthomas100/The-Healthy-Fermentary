@@ -1,5 +1,5 @@
-import { Product } from '../graphql/types';
+import { ProductWithQuantity } from './ProductWithQuantity';
 
 export type ProductsQueryType = {
-  products: Product[];
+  products: ProductWithQuantity[];
 };

@@ -1,7 +1,7 @@
 import { CheckIcon, StarIcon } from '@heroicons/react/solid';
 import { ShieldCheckIcon } from '@heroicons/react/outline';
-import AddToCartButton from './AddToCartButton';
-import { ProductWithQuantity } from '../lib/cartState';
+import { ProductWithQuantity } from '../../types/ProductWithQuantity';
+import AddToCartButton from '../AddToCartButton';
 
 const reviews = { average: 4, totalCount: 1624 };
 

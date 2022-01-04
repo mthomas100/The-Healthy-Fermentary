@@ -1,5 +1,5 @@
-import { useCart } from '../lib/cartState';
-import CheckoutButton from './CheckoutButton';
+import { useCart } from '../../lib/cartState';
+import Button from '../general/Button';
 import ModifyCartSelector from './ModifyCartSelector';
 
 export default function Cart() {
@@ -123,7 +123,7 @@ export default function Cart() {
               </div>
             </div>
             <div className="mt-10">
-              <CheckoutButton />
+              <Button urlRoute="/checkout" text="Checkout" />
             </div>
 
             <div className="mt-6 text-sm text-center text-gray-500">

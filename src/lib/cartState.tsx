@@ -8,16 +8,7 @@ import React, {
 } from 'react';
 
 import cloneDeep from 'lodash.clonedeep';
-import { Product } from '../graphql/types';
-
-// import { GlobalContext } from '../types/globalContext';
-// import { TeamsData } from '../types/teamsData';
-
-// type CartItem = {
-//   product: Product;
-// };
-
-export type ProductWithQuantity = Product & { quantity: number };
+import { ProductWithQuantity } from '../types/ProductWithQuantity';
 
 type CartContext = {
   // cart contents is an array of objects

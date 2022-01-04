@@ -1,8 +1,8 @@
-import { Product } from '../graphql/types';
+import { ProductWithQuantity } from '../../types/ProductWithQuantity';
 import ProductLink from './ProductLink';
 
 type ProductsProps = {
-  products: Product[];
+  products: ProductWithQuantity[];
 };
 
 const ProductsList: React.FC<ProductsProps> = ({ products }) => {

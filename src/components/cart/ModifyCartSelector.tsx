@@ -1,5 +1,6 @@
 import React from 'react';
-import { ProductWithQuantity, useCart } from '../lib/cartState';
+import { useCart } from '../../lib/cartState';
+import { ProductWithQuantity } from '../../types/ProductWithQuantity';
 
 type ModifyCartSelectorProps = {
   product: ProductWithQuantity;

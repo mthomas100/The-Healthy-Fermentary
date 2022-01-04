@@ -1,16 +1,16 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import ProductsFilter from '../components/ProductsFilter';
 import Hero from '../components/Hero';
 import { ALL_PRODUCTS_QUERY } from '../graphql/queries';
 import { Product } from '../graphql/types';
 import client from '../lib/apolloClient';
-import ProductsHeader from '../components/ProductsHeader';
-import ProductsList from '../components/ProductsList';
 import NewsLetter from '../components/Newsletter';
+import ProductsShowcase from '../components/shopping/ProductsShowcase';
+import { ProductsQueryType } from '../types/ProductsQueryType';
+import { ProductWithQuantity } from '../types/ProductWithQuantity';
 
 type HomeProps = {
-  products: Product[];
+  products: ProductWithQuantity[];
 };
 
 const Home: NextPage<HomeProps> = ({ products }) => {
@@ -22,9 +22,7 @@ const Home: NextPage<HomeProps> = ({ products }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
-      <ProductsHeader />
-      <ProductsFilter />
-      <ProductsList products={products} />
+      <ProductsShowcase products={products} />
       <NewsLetter />
     </>
   );
@@ -32,10 +30,10 @@ const Home: NextPage<HomeProps> = ({ products }) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   /* eslint-disable */
 
-  const { data: { products }} = await client.query({
+  const { data: { products }} = await client.query<ProductsQueryType>({
     query: ALL_PRODUCTS_QUERY,
   });
 
@@ -43,7 +41,6 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
   return {
     props: {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       products,
     },
   };

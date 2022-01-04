@@ -43,6 +43,10 @@ class MyDocument extends Document {
       <Html lang="en-ZA">
         <Head>
           <meta charSet="utf-8" />
+          <meta
+            name="description"
+            content="The Healthy Fermentary is your high quality source for deliverable fermented beverages"
+          />
           <link
             href="https://fonts.googleapis.com/css?family=Reenie+Beanie&display=swap"
             rel="stylesheet"
