@@ -10,6 +10,7 @@ import { ProductWithQuantity } from '../types/ProductWithQuantity';
 type FilterContext = {
   setActiveSort: (sort: string) => void;
   filterData: (data: ProductWithQuantity[]) => ProductWithQuantity[];
+  activeSort: string;
 };
 
 const LocalStateContext = createContext<FilterContext>({} as FilterContext);
@@ -38,13 +39,8 @@ const FilterStateProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
-  useEffect(() => {
-    // Manipulate data here based on the changing of activeSort or active filters
-    console.log(activeSort);
-  }, [activeSort]);
-
   return (
-    <LocalStateProvider value={{ setActiveSort, filterData }}>
+    <LocalStateProvider value={{ setActiveSort, activeSort, filterData }}>
       {children}
     </LocalStateProvider>
   );

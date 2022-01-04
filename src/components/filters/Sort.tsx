@@ -10,12 +10,14 @@ const sortOptions = [
 ];
 
 export default function Sort() {
-  const { setActiveSort } = useFilter();
+  const { setActiveSort, activeSort } = useFilter();
   return (
     <Menu as="div" className="relative z-10 inline-block text-left">
       <div>
         <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-          Sort
+          {activeSort === ''
+            ? 'Sort'
+            : sortOptions.find((option) => option.value === activeSort)?.name}
           <ChevronDownIcon
             className="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500"
             aria-hidden="true"
