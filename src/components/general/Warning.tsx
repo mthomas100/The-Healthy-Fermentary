@@ -3,7 +3,7 @@ import React from 'react';
 
 const Warning = () => {
   return (
-    <div className="pt-8">
+    <div className="py-8">
       <div className="rounded-md bg-yellow-50 p-4">
         <div className="flex">
           <div className="flex-shrink-0">

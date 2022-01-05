@@ -59,7 +59,7 @@ const FilterStateProvider: React.FC<{ children: ReactNode }> = ({
       return allowProduct;
     });
 
-    console.log('filtered', filteredData);
+    // console.log('filtered', filteredData);
 
     return filteredData;
 
@@ -69,7 +69,7 @@ const FilterStateProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   useEffect(() => {
-    console.log(activeFilters);
+    // console.log(activeFilters);
   }, [activeFilters]);
 
   return (
