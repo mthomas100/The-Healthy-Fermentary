@@ -1,11 +1,13 @@
 import { useCart } from '../../lib/cartState';
 import Button from '../general/Button';
+import Warning from '../general/Warning';
 import ModifyCartSelector from './ModifyCartSelector';
 
 export default function Cart() {
   const { cartContents: cart, removeFromCart } = useCart();
   return (
     <div className="bg-white">
+      <Warning />
       <div className="max-w-4xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
           Shopping Cart

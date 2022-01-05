@@ -15,8 +15,9 @@ const ProductsList: React.FC<ProductsProps> = ({ products }) => {
   return (
     <div className="bg-white">
       <div className="max-w-full mx-auto pb-16 px-4 sm:pb-24 sm:px-6 lg:px-8">
+        {/* TODO: Implement a minimum height for the grid */}
         <div className="pt-6 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-3 md:gap-y-10 lg:gap-x-8">
-          {filteredProducts.map((product) => (
+          {filteredProducts?.map((product) => (
             <ProductsListProduct key={product.id} product={product} />
           ))}
         </div>

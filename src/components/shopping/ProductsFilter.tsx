@@ -26,7 +26,7 @@ const ProductsFilter: React.FC<ProductsFilterProps> = ({ categories }) => {
 
               <div className="flex items-center justify-between">
                 <Sort />
-                <Filter categories={categories} />
+                {/* <Filter categories={categories} /> */}
               </div>
             </section>
           </div>

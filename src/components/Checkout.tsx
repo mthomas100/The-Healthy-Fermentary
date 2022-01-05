@@ -1,43 +1,22 @@
 import { Disclosure } from '@headlessui/react';
 import { LockClosedIcon } from '@heroicons/react/solid';
 import { useCart } from '../lib/cartState';
+import Warning from './general/Warning';
 
 const subtotal = '$210.00';
 const discount = { code: 'CHEAPSKATE', amount: '$24.00' };
 const taxes = '$23.68';
 const shipping = '$22.00';
 const total = '$341.68';
-// const products = [
-//   {
-//     id: 1,
-//     name: 'Micro Backpack',
-//     href: '#',
-//     price: '$70.00',
-//     color: 'Moss',
-//     size: '5L',
-//     imageSrc:
-//       'https://tailwindui.com/img/ecommerce-images/checkout-page-04-product-01.jpg',
-//     imageAlt:
-//       'Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps.',
-//   },
-//   // More products...
-// ];
 
 export default function Checkout() {
   const { cartContents } = useCart();
   return (
-    <>
-      {/*
-        This example requires updating your template:
+    <div className="bg-white">
+      <Warning />
 
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
       <main className="lg:min-h-full lg:overflow-hidden lg:flex lg:flex-row-reverse bg-white">
         <h1 className="sr-only">Checkout</h1>
-
         {/* Mobile order summary */}
         <section
           aria-labelledby="order-heading"
@@ -462,6 +441,6 @@ export default function Checkout() {
           </div>
         </section>
       </main>
-    </>
+    </div>
   );
 }

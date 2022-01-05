@@ -1,6 +1,6 @@
 import { Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import React, { Fragment } from 'react';
+import React, { ChangeEvent, Fragment, SyntheticEvent } from 'react';
 import { Category } from '../../graphql/types';
 import { useFilter } from '../../lib/filterState';
 
@@ -21,6 +21,8 @@ const filters = [
   },
 ];
 
+// Will make a categories with check type (boolean) where default is false (unchecked)
+
 // TODO: Replace hardcoded filters above with dynamic filters from the server (see below)
 
 type FilterProps = {
@@ -28,7 +30,24 @@ type FilterProps = {
 };
 
 const Filter: React.FC<FilterProps> = ({ categories }) => {
-  const { setActiveFilters } = useFilter();
+  const { setActiveFilters, activeFilters } = useFilter();
+
+  const handleFilterSelect = (e: ChangeEvent<HTMLInputElement>) => {
+    const { checked, value } = e.target;
+    // If value is checked add to activeFilters
+    if (checked) {
+      setActiveFilters((prevFilters: string[]) => [...prevFilters, value]);
+    }
+    // If value is unchecked remove from activeFilters
+    if (!checked) {
+      setActiveFilters((prevFilters) => [
+        ...prevFilters.filter((filter) => filter !== value),
+      ]);
+    }
+
+    // TODO: Reset filters when page is left
+  };
+
   return (
     <Popover.Group className="sm:flex sm:items-baseline sm:space-x-8">
       {filters.map((section, sectionIdx) => (
@@ -65,7 +84,13 @@ const Filter: React.FC<FilterProps> = ({ categories }) => {
             <Popover.Panel className="origin-top-right absolute right-0 mt-2 bg-white rounded-md shadow-2xl p-4 ring-1 ring-black ring-opacity-5 focus:outline-none">
               <form className="space-y-4">
                 {section.options.map((option, optionIdx) => (
-                  <div key={option.value} className="flex items-center">
+                  <div
+                    key={option.value}
+                    className="flex items-center"
+                    onChange={(e) =>
+                      handleFilterSelect(e as ChangeEvent<HTMLInputElement>)
+                    }
+                  >
                     <input
                       id={`filter-${section.id}-${optionIdx}`}
                       name={`${section.id}[]`}
