@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import { useCart } from '../../lib/cartState';
 import useCost from '../../lib/useCost';
 import Button from '../general/Button';
@@ -11,7 +13,7 @@ export default function Cart() {
   return (
     <div className="bg-white">
       <Warning />
-      <div className="max-w-4xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto py-8 px-4 sm:py-12 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
           Shopping Cart
         </h1>
@@ -23,35 +25,24 @@ export default function Cart() {
             <ul className="border-t border-b border-gray-200 divide-y divide-gray-200">
               {cart.map((cartItem) => (
                 <li key={cartItem.id} className="flex py-6 sm:py-10">
-                  <div className="flex-shrink-0">
-                    <img
-                      src={cartItem.image?.url}
-                      alt={cartItem.title}
-                      className="w-24 h-24 rounded-lg object-center object-cover sm:w-32 sm:h-32"
-                    />
+                  <div className="flex-shrink-0 relative w-24 h-24 sm:w-32 sm:h-32">
+                    {cartItem.image?.url && (
+                      <Image
+                        src={cartItem.image?.url}
+                        alt={cartItem.title}
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="50% 50%"
+                        className="rounded-lg"
+                      />
+                    )}
                   </div>
 
                   <div className="relative ml-4 flex-1 flex flex-col justify-between sm:ml-6">
                     <div>
                       <div className="flex justify-between sm:grid sm:grid-cols-2">
                         <div className="pr-6">
-                          <h3 className="text-sm">
-                            <a
-                              href="#"
-                              className="font-medium text-gray-700 hover:text-gray-800"
-                            >
-                              {cartItem.title}
-                            </a>
-                          </h3>
-                          <p className="mt-1 text-sm text-gray-500">
-                            {/* {product.color} */} Color {/* TODO: *change */}
-                          </p>
-                          {/* {product.size ? (
-                            <p className="mt-1 text-sm text-gray-500">
-                              {product.size}
-                            </p>
-                          ) : null} */}
-                          <p>Size</p> {/* TODO: *change */}
+                          <h3 className="text-sm">{cartItem.title}</h3>
                         </div>
 
                         <p className="text-sm font-medium text-gray-900 text-right">
@@ -140,12 +131,11 @@ export default function Cart() {
             <div className="mt-6 text-sm text-center text-gray-500">
               <p>
                 or{' '}
-                <a
-                  href="#"
-                  className="text-indigo-600 font-medium hover:text-indigo-500"
-                >
-                  Continue Shopping<span aria-hidden="true"> &rarr;</span>
-                </a>
+                <Link href="/">
+                  <a className="text-indigo-600 font-medium hover:text-indigo-500">
+                    Continue Shopping<span aria-hidden="true"> &rarr;</span>
+                  </a>
+                </Link>
               </p>
             </div>
           </div>

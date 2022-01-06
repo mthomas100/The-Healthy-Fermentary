@@ -17,7 +17,7 @@ const navigation = [
   // },
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/satynferments/',
+    href: 'https://instagram.com/thehealthyfermentary?utm_medium=copy_link',
     icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
       <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
         <path

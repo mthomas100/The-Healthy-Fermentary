@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Hero() {
   const imageUrl =
     'https://res.cloudinary.com/mthomas/image/upload/v1637687534/satyn-ecommerce/large_kombucha_Fruit_d95b969dfa_cec9e031d7.jpg';
@@ -5,9 +7,13 @@ export default function Hero() {
   return (
     <div className="relative bg-white">
       <div className="absolute inset-0">
-        <img className="w-full h-full object-cover" src={imageUrl} alt="" />
+        <Image
+          src="/images/THFCrew.jpeg"
+          alt=""
+          layout="fill"
+          objectFit="cover"
+        />
 
-        {/* use below to add filter to image (add bg color) */}
         <div
           className="absolute inset-0 mix-blend-multiply"
           aria-hidden="true"

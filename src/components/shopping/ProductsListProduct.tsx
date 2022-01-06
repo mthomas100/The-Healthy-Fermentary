@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { ProductWithQuantity } from '../../types/ProductWithQuantity';
 import ProductLink from './ProductLink';
@@ -12,12 +13,16 @@ const ProductsListProduct: React.FC<ProductsListProductProps> = ({
   return (
     <div className="group relative">
       <ProductLink slug={product.slug}>
-        <div className="w-full h-56 bg-gray-200 rounded-md overflow-hidden group-hover:opacity-75 lg:h-72 xl:h-80">
-          <img
-            src={product.image?.url}
-            alt={product.title}
-            className="w-full h-full object-center object-cover"
-          />
+        <div className="h-56 bg-gray-200 rounded-md overflow-hidden group-hover:opacity-75 lg:h-72 xl:h-80 relative">
+          {product.image?.url && (
+            <Image
+              src={product.image?.url}
+              alt={product.title}
+              layout="fill"
+              objectFit="cover"
+              objectPosition="50% 50%"
+            />
+          )}
         </div>
 
         <h3 className="mt-4 text-sm text-gray-700 font-normal">

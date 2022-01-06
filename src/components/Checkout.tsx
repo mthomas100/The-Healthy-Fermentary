@@ -1,14 +1,12 @@
 import { Disclosure } from '@headlessui/react';
 import { LockClosedIcon } from '@heroicons/react/solid';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useCart } from '../lib/cartState';
 import useCost from '../lib/useCost';
 import Warning from './general/Warning';
 
-const subtotal = '$210.00';
 const discount = { code: 'CHEAPSKATE', amount: '$0.00' };
-const taxes = '$23.68';
-const shipping = '$22.00';
-const total = '$341.68';
 
 export default function Checkout() {
   const { cartContents, cartSubTotal } = useCart();
@@ -46,12 +44,22 @@ export default function Checkout() {
                 <Disclosure.Panel>
                   <ul className="divide-y divide-gray-200 border-b border-gray-200">
                     {cartContents.map((cartItem) => (
-                      <li key={cartItem.id} className="flex py-6 space-x-6">
-                        <img
-                          src={cartItem.image?.url}
-                          alt={cartItem.title}
-                          className="flex-none w-40 h-40 object-center object-cover bg-gray-200 rounded-md"
-                        />
+                      <li
+                        key={cartItem.id}
+                        className="flex py-6 space-x-6 relative"
+                      >
+                        <div className="flex-none relative w-40 h-40">
+                          {cartItem.image?.url && (
+                            <Image
+                              src={cartItem.image?.url}
+                              alt={cartItem.title}
+                              className="rounded-md"
+                              layout="fill"
+                              objectFit="cover"
+                              objectPosition="50% 50%"
+                            />
+                          )}
+                        </div>
                         <div className="flex flex-col justify-between space-y-4">
                           <div className="text-sm font-medium space-y-1">
                             <h3 className="text-gray-900">{cartItem.title}</h3>
@@ -149,11 +157,18 @@ export default function Checkout() {
           <ul className="flex-auto overflow-y-auto divide-y divide-gray-200 px-6">
             {cartContents.map((cartItem) => (
               <li key={cartItem.id} className="flex py-6 space-x-6">
-                <img
-                  src={cartItem.image?.url}
-                  alt={cartItem.title}
-                  className="flex-none w-40 h-40 object-center object-cover bg-gray-200 rounded-md"
-                />
+                <div className="w-40 h-40 flex-none relative">
+                  {cartItem.image?.url && (
+                    <Image
+                      src={cartItem.image?.url}
+                      alt={cartItem.title}
+                      layout="fill"
+                      objectFit="cover"
+                      objectPosition="50% 50%"
+                      className="rounded-md"
+                    />
+                  )}
+                </div>
                 <div className="flex flex-col justify-between space-y-4">
                   <div className="text-sm font-medium space-y-1">
                     <h3 className="text-gray-900">{cartItem.title}</h3>
@@ -162,20 +177,16 @@ export default function Checkout() {
                     <p className="text-gray-500">{product.size}</p> */}
                   </div>
                   <div className="flex space-x-4">
-                    <button
-                      type="button"
-                      className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                    >
-                      Edit
-                    </button>
-                    <div className="flex border-l border-gray-300 pl-4">
-                      <button
-                        type="button"
-                        className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                      >
-                        Remove
-                      </button>
-                    </div>
+                    <Link href="/cart">
+                      <a>
+                        <button
+                          type="button"
+                          className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                        >
+                          Edit
+                        </button>
+                      </a>
+                    </Link>
                   </div>
                 </div>
               </li>

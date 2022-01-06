@@ -1,5 +1,7 @@
 import { CheckIcon, StarIcon } from '@heroicons/react/solid';
 import { ShieldCheckIcon } from '@heroicons/react/outline';
+import Link from 'next/link';
+import Image from 'next/image';
 import { ProductWithQuantity } from '../../types/ProductWithQuantity';
 import AddToCartButton from '../AddToCartButton';
 
@@ -19,34 +21,6 @@ const SingleProduct: React.FC<SingleProductProps> = ({ product }) => {
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
         {/* Product details */}
         <div className="lg:max-w-lg lg:self-end">
-          <nav aria-label="Breadcrumb">
-            {/* <ol role="list" className="flex items-center space-x-2">
-              {product.breadcrumbs.map((breadcrumb, breadcrumbIdx) => (
-                <li key={breadcrumb.id}>
-                  <div className="flex items-center text-sm">
-                    <a
-                      href={breadcrumb.href}
-                      className="font-medium text-gray-500 hover:text-gray-900"
-                    >
-                      {breadcrumb.name}
-                    </a>
-                    {breadcrumbIdx !== product.breadcrumbs.length - 1 ? (
-                      <svg
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor"
-                        aria-hidden="true"
-                        className="ml-2 flex-shrink-0 h-5 w-5 text-gray-300"
-                      >
-                        <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
-                      </svg>
-                    ) : null}
-                  </div>
-                </li>
-              ))}
-            </ol> */}
-          </nav>
-
           <div className="mt-4">
             <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               {product.title}
@@ -109,11 +83,14 @@ const SingleProduct: React.FC<SingleProductProps> = ({ product }) => {
         {/* Product image */}
         <div className="mt-10 lg:mt-0 lg:col-start-2 lg:row-span-2 lg:self-center">
           <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden">
-            <img
-              src={product.image?.url}
-              alt={product.title}
-              className="w-full h-full object-center object-cover"
-            />
+            {product.image?.url && (
+              <Image
+                src={product.image?.url}
+                alt={product.title}
+                layout="fill"
+                objectFit="cover"
+              />
+            )}
           </div>
         </div>
 
@@ -129,15 +106,22 @@ const SingleProduct: React.FC<SingleProductProps> = ({ product }) => {
                 <AddToCartButton product={product} />
               </div>
               <div className="mt-6 text-center">
-                <a href="#" className="group inline-flex text-base font-medium">
+                <div className="group inline-flex text-base font-medium pointer-events-none">
                   <ShieldCheckIcon
                     className="flex-shrink-0 mr-2 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
                   />
-                  <span className="text-gray-500 hover:text-gray-700">
+                  <span className="text-gray-500 hover:text-gray-700 ">
                     Satisfaction Guarantee
                   </span>
-                </a>
+                </div>
+              </div>
+              <div className=" text-sm mt-8 lg:mt-16 text-center lg:text-left">
+                <Link href="/">
+                  <a className="font-medium text-indigo-600 hover:text-indigo-500">
+                    Continue Shopping<span aria-hidden="true"> &rarr;</span>
+                  </a>
+                </Link>
               </div>
             </form>
           </section>

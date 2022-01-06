@@ -1820,7 +1820,12 @@ export type All_Products_QueryQueryVariables = Exact<{
 }>;
 
 
-export type All_Products_QueryQuery = { __typename?: 'Query', products?: Array<{ __typename?: 'Product', id: string, title: string, description: string, price: number, slug: string, image?: { __typename?: 'UploadFile', url: string } | null | undefined, categories?: Array<{ __typename: 'Category', _id: string, createdAt: any, id: string, name: string, slug: string, updatedAt: any } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
+export type All_Products_QueryQuery = { __typename?: 'Query', products?: Array<{ __typename: 'Product', _id: string, createdAt: any, description: string, id: string, price: number, slug: string, status: Enum_Product_Status, title: string, updatedAt: any, categories?: Array<{ __typename: 'Category', _id: string, createdAt: any, id: string, name: string, slug: string, updatedAt: any } | null | undefined> | null | undefined, image?: { __typename?: 'UploadFile', id: string, createdAt: any, updatedAt: any, name: string, alternativeText?: string | null | undefined, caption?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined, formats?: any | null | undefined, hash: string, ext?: string | null | undefined, mime: string, size: number, url: string } | null | undefined } | null | undefined> | null | undefined };
+
+export type All_Categories_QueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type All_Categories_QueryQuery = { __typename?: 'Query', categories?: Array<{ __typename: 'Category', _id: string, createdAt: any, id: string, name: string, slug: string, updatedAt: any, products?: Array<{ __typename: 'Product', _id: string, createdAt: any, description: string, id: string, price: number, slug: string, status: Enum_Product_Status, title: string, updatedAt: any, image?: { __typename?: 'UploadFile', id: string, createdAt: any, updatedAt: any, name: string, alternativeText?: string | null | undefined, caption?: string | null | undefined, width?: number | null | undefined, height?: number | null | undefined, formats?: any | null | undefined, hash: string, ext?: string | null | undefined, mime: string, size: number, url: string } | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
 
 export const FragmentCategoryFragmentDoc = gql`
     fragment fragmentCategory on Category {
@@ -1871,20 +1876,26 @@ export const FragmentProductFragmentDoc = gql`
 export const All_Products_QueryDocument = gql`
     query ALL_PRODUCTS_QUERY($slug: String) {
   products(where: {slug: $slug}) {
-    id
-    title
-    description
-    image {
-      url
-    }
-    price
-    slug
+    __typename
+    _id
     categories {
       ...fragmentCategory
     }
+    createdAt
+    description
+    id
+    image {
+      ...fragmentImage
+    }
+    price
+    slug
+    status
+    title
+    updatedAt
   }
 }
-    ${FragmentCategoryFragmentDoc}`;
+    ${FragmentCategoryFragmentDoc}
+${FragmentImageFragmentDoc}`;
 
 /**
  * __useAll_Products_QueryQuery__
@@ -1913,3 +1924,46 @@ export function useAll_Products_QueryLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type All_Products_QueryQueryHookResult = ReturnType<typeof useAll_Products_QueryQuery>;
 export type All_Products_QueryLazyQueryHookResult = ReturnType<typeof useAll_Products_QueryLazyQuery>;
 export type All_Products_QueryQueryResult = Apollo.QueryResult<All_Products_QueryQuery, All_Products_QueryQueryVariables>;
+export const All_Categories_QueryDocument = gql`
+    query ALL_CATEGORIES_QUERY {
+  categories {
+    __typename
+    _id
+    createdAt
+    id
+    name
+    products {
+      ...fragmentProduct
+    }
+    slug
+    updatedAt
+  }
+}
+    ${FragmentProductFragmentDoc}`;
+
+/**
+ * __useAll_Categories_QueryQuery__
+ *
+ * To run a query within a React component, call `useAll_Categories_QueryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAll_Categories_QueryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAll_Categories_QueryQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAll_Categories_QueryQuery(baseOptions?: Apollo.QueryHookOptions<All_Categories_QueryQuery, All_Categories_QueryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<All_Categories_QueryQuery, All_Categories_QueryQueryVariables>(All_Categories_QueryDocument, options);
+      }
+export function useAll_Categories_QueryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<All_Categories_QueryQuery, All_Categories_QueryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<All_Categories_QueryQuery, All_Categories_QueryQueryVariables>(All_Categories_QueryDocument, options);
+        }
+export type All_Categories_QueryQueryHookResult = ReturnType<typeof useAll_Categories_QueryQuery>;
+export type All_Categories_QueryLazyQueryHookResult = ReturnType<typeof useAll_Categories_QueryLazyQuery>;
+export type All_Categories_QueryQueryResult = Apollo.QueryResult<All_Categories_QueryQuery, All_Categories_QueryQueryVariables>;

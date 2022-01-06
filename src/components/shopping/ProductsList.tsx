@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
 import { useFilter } from '../../lib/filterState';
 import { ProductWithQuantity } from '../../types/ProductWithQuantity';
-import ProductLink from './ProductLink';
 import ProductsListProduct from './ProductsListProduct';
 
 type ProductsProps = {
@@ -22,14 +20,14 @@ const ProductsList: React.FC<ProductsProps> = ({ products }) => {
           ))}
         </div>
 
-        <div className="mt-8 text-sm">
+        {/* <div className="mt-8 text-sm">
           <a
             href="#"
             className="font-medium text-indigo-600 hover:text-indigo-500"
           >
             Shop the collection<span aria-hidden="true"> &rarr;</span>
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );
