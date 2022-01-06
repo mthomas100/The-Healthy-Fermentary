@@ -1,10 +1,13 @@
 import { useCart } from '../../lib/cartState';
+import useCost from '../../lib/useCost';
 import Button from '../general/Button';
 import Warning from '../general/Warning';
 import ModifyCartSelector from './ModifyCartSelector';
 
 export default function Cart() {
-  const { cartContents: cart, removeFromCart } = useCart();
+  const { cartContents: cart, removeFromCart, cartSubTotal } = useCart();
+  const cost = useCost(cartSubTotal);
+
   return (
     <div className="bg-white">
       <Warning />
@@ -103,22 +106,28 @@ export default function Cart() {
                 <dl className="-my-4 text-sm divide-y divide-gray-200">
                   <div className="py-4 flex items-center justify-between">
                     <dt className="text-gray-600">Subtotal</dt>
-                    <dd className="font-medium text-gray-900">$99.00</dd>
+                    <dd className="font-medium text-gray-900">
+                      {cost.subtotalCost}
+                    </dd>
                   </div>
                   <div className="py-4 flex items-center justify-between">
                     <dt className="text-gray-600">Shipping</dt>
-                    <dd className="font-medium text-gray-900">$5.00</dd>
+                    <dd className="font-medium text-gray-900">
+                      {cost.shippingCost}
+                    </dd>
                   </div>
                   <div className="py-4 flex items-center justify-between">
                     <dt className="text-gray-600">Tax</dt>
-                    <dd className="font-medium text-gray-900">$8.32</dd>
+                    <dd className="font-medium text-gray-900">
+                      {cost.taxCost}
+                    </dd>
                   </div>
                   <div className="py-4 flex items-center justify-between">
                     <dt className="text-base font-medium text-gray-900">
                       Order total
                     </dt>
                     <dd className="text-base font-medium text-gray-900">
-                      $112.32
+                      {cost.orderTotal}
                     </dd>
                   </div>
                 </dl>

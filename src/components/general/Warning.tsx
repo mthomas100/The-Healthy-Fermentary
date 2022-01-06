@@ -13,12 +13,14 @@ const Warning = () => {
             />
           </div>
           <div className="ml-3">
-            <h3 className="text-sm font-medium text-yellow-800">Attention</h3>
+            <h3 className="text-sm font-medium text-yellow-800">Hold on!</h3>
             <div className="mt-2 text-sm text-yellow-700">
               <p>
-                This page is under development and is displayed for
-                demonstration purposes only. Check back later in 2022 to make a
-                purchase from The Healthy Fermentary
+                We are humbled that you like our selection enough to get to this
+                point but alas we have some news. The Healthy Fermentary will
+                not be in operation until later in 2022. Until then, feel free
+                to subscribe to our newsletter for updates! We will let you know
+                when our healthy selection is available for purchase.
               </p>
             </div>
           </div>

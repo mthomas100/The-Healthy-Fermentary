@@ -9,6 +9,7 @@ import React, {
 
 import cloneDeep from 'lodash.clonedeep';
 import { ProductWithQuantity } from '../types/ProductWithQuantity';
+import useCost, { UseCostProps } from './useCost';
 
 type CartContext = {
   // cart contents is an array of objects
@@ -76,6 +77,10 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setCartContents([]);
   }
 
+  // COST Calculation
+
+  const cost = useCost(cartSubTotal);
+
   const firstUpdate = useRef(true);
   useEffect(() => {
     if (firstUpdate.current) {
@@ -87,7 +92,7 @@ const CartStateProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     );
     setCartSubTotal(
       cartContents.reduce(
-        (tally, item) => tally + item.price * item.quantity,
+        (tally, item) => tally + item.quantity * item.price,
         0
       )
     );

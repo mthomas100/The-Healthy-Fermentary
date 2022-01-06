@@ -1,16 +1,18 @@
 import { Disclosure } from '@headlessui/react';
 import { LockClosedIcon } from '@heroicons/react/solid';
 import { useCart } from '../lib/cartState';
+import useCost from '../lib/useCost';
 import Warning from './general/Warning';
 
 const subtotal = '$210.00';
-const discount = { code: 'CHEAPSKATE', amount: '$24.00' };
+const discount = { code: 'CHEAPSKATE', amount: '$0.00' };
 const taxes = '$23.68';
 const shipping = '$22.00';
 const total = '$341.68';
 
 export default function Checkout() {
-  const { cartContents } = useCart();
+  const { cartContents, cartSubTotal } = useCart();
+  const cost = useCost(cartSubTotal);
   return (
     <div className="bg-white">
       <Warning />
@@ -104,31 +106,31 @@ export default function Checkout() {
                   <dl className="text-sm font-medium text-gray-500 mt-10 space-y-6">
                     <div className="flex justify-between">
                       <dt>Subtotal</dt>
-                      <dd className="text-gray-900">{subtotal}</dd>
+                      <dd className="text-gray-900">{cost.subtotalCost}</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="flex">
                         Discount
-                        <span className="ml-2 rounded-full bg-gray-200 text-xs text-gray-600 py-0.5 px-2 tracking-wide">
+                        {/* <span className="ml-2 rounded-full bg-gray-200 text-xs text-gray-600 py-0.5 px-2 tracking-wide">
                           {discount.code}
-                        </span>
+                        </span> */}
                       </dt>
                       <dd className="text-gray-900">-{discount.amount}</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt>Taxes</dt>
-                      <dd className="text-gray-900">{taxes}</dd>
+                      <dd className="text-gray-900">{cost.taxCost}</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt>Shipping</dt>
-                      <dd className="text-gray-900">{shipping}</dd>
+                      <dd className="text-gray-900">{cost.shippingCost}</dd>
                     </div>
                   </dl>
                 </Disclosure.Panel>
 
                 <p className="flex items-center justify-between text-sm font-medium text-gray-900 border-t border-gray-200 pt-6 mt-6">
                   <span className="text-base">Total</span>
-                  <span className="text-base">{total}</span>
+                  <span className="text-base">{cost.orderTotal}</span>
                 </p>
               </>
             )}
@@ -207,28 +209,28 @@ export default function Checkout() {
             <dl className="text-sm font-medium text-gray-500 mt-10 space-y-6">
               <div className="flex justify-between">
                 <dt>Subtotal</dt>
-                <dd className="text-gray-900">{subtotal}</dd>
+                <dd className="text-gray-900">{cost.subtotalCost}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="flex">
                   Discount
-                  <span className="ml-2 rounded-full bg-gray-200 text-xs text-gray-600 py-0.5 px-2 tracking-wide">
+                  {/* <span className="ml-2 rounded-full bg-gray-200 text-xs text-gray-600 py-0.5 px-2 tracking-wide">
                     {discount.code}
-                  </span>
+                  </span> */}
                 </dt>
                 <dd className="text-gray-900">-{discount.amount}</dd>
               </div>
               <div className="flex justify-between">
                 <dt>Taxes</dt>
-                <dd className="text-gray-900">{taxes}</dd>
+                <dd className="text-gray-900">{cost.taxCost}</dd>
               </div>
               <div className="flex justify-between">
                 <dt>Shipping</dt>
-                <dd className="text-gray-900">{shipping}</dd>
+                <dd className="text-gray-900">{cost.shippingCost}</dd>
               </div>
               <div className="flex items-center justify-between border-t border-gray-200 text-gray-900 pt-6">
                 <dt className="text-base">Total</dt>
-                <dd className="text-base">{total}</dd>
+                <dd className="text-base">{cost.orderTotal}</dd>
               </div>
             </dl>
           </div>
@@ -427,7 +429,7 @@ export default function Checkout() {
                 type="submit"
                 className="w-full mt-6 bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Pay {total}
+                Pay {cost.orderTotal}
               </button>
 
               <p className="flex justify-center text-sm font-medium text-gray-500 mt-6">
