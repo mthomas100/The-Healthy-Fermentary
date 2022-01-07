@@ -4,9 +4,10 @@ import useCost from '../../lib/useCost';
 import CheckoutButton from '../general/CheckoutButton';
 import Warning from '../general/Warning';
 import CartItem from './CartItem';
+import EmptyCart from './EmptyCart';
 
 export default function Cart() {
-  const { cartContents: cart, cartSubTotal } = useCart();
+  const { cartContents, cartSubTotal } = useCart();
   const cost = useCost(cartSubTotal);
 
   return (
@@ -20,11 +21,12 @@ export default function Cart() {
         <form className="mt-12">
           <div>
             <h2 className="sr-only">Items in your shopping cart</h2>
-
             <ul className="border-t border-b border-gray-200 divide-y divide-gray-200">
-              {cart.map((cartItem) => (
-                <CartItem cartItem={cartItem} />
-              ))}
+              {cartContents.length > 0 ? (
+                cartContents.map((cartItem) => <CartItem cartItem={cartItem} />)
+              ) : (
+                <EmptyCart />
+              )}
             </ul>
           </div>
 
