@@ -1,3 +1,4 @@
+import { XIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '../../lib/cartState';
@@ -63,25 +64,14 @@ export default function Cart() {
                       </div>
                     </div>
 
-                    <p className="mt-4 flex text-sm text-gray-700 space-x-2">
-                      {/* {product.inStock ? (
-                        <CheckIcon
-                          className="flex-shrink-0 h-5 w-5 text-green-500"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        <ClockIcon
-                          className="flex-shrink-0 h-5 w-5 text-gray-300"
-                          aria-hidden="true"
-                        />
-                      )} */}
+                    {/* <p className="mt-4 flex text-sm text-gray-700 space-x-2">
+                      <XIcon
+                        className="flex-shrink-0 h-5 w-5 text-red-500"
+                        aria-hidden="true"
+                      />
 
-                      {/* <span>
-                        {product.inStock
-                          ? 'In stock'
-                          : `Ships in ${product.leadTime}`}
-                      </span> */}
-                    </p>
+                      <span>Out of stock</span>
+                    </p> */}
                   </div>
                 </li>
               ))}

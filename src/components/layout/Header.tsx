@@ -3,24 +3,6 @@ import { ShoppingBagIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import { useCart } from '../../lib/cartState';
 
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-};
-const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-];
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-];
-
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ');
 }
@@ -32,6 +14,7 @@ const Header: React.FC = () => {
     <Disclosure as="header" className="bg-white shadow-md sticky top-0 z-50">
       {() => (
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
+          {/* Brand */}
           <div className="relative h-16 flex justify-between items-center">
             <div className="relative z-10 px-2 flex lg:px-0">
               <div className="flex-shrink-0 flex items-center">
@@ -53,9 +36,14 @@ const Header: React.FC = () => {
                     className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
                   />
-                  <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                    {cartItemTotal}
-                  </span>
+                  {cartItemTotal > 0 && (
+                    <div className="w-[1.05rem] h-[1.05rem] bg-red-500 rounded-full flex justify-center self-start items-center">
+                      <span className="text-[10px] font-medium text-gray-100">
+                        {cartItemTotal}
+                      </span>
+                    </div>
+                  )}
+
                   <span className="sr-only">items in cart, view bag</span>
                 </a>
               </Link>

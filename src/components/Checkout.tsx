@@ -74,14 +74,6 @@ export default function Checkout() {
                             >
                               Edit
                             </button>
-                            <div className="flex border-l border-gray-300 pl-4">
-                              <button
-                                type="button"
-                                className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                              >
-                                Remove
-                              </button>
-                            </div>
                           </div>
                         </div>
                       </li>
